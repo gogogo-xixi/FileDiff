@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>文件夹比较器</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="app">
+    <div class="header-bar">
+      <div>
+        <h1>文件夹比较器</h1>
+        <p class="subtitle">拖入 / 选择 / 输入路径，平级对比文件名差异</p>
+      </div>
+      <button id="exitBtn" class="exit-btn" title="关闭服务并退出">退出</button>
+    </div>
+
+    <div id="statusBar" class="status-bar">正在连接服务...</div>
+
+    <div class="drop-area-container">
+      <div class="side-group">
+        <div class="drop-area" id="dropLeft">
+          <div class="drop-placeholder">
+            <span class="drop-icon">[文件夹]</span>
+            <span>拖入左侧文件夹</span>
+            <span class="drop-hint">或点击选择</span>
+          </div>
+          <div class="drop-path" id="pathLeft"></div>
+          <div class="item-count" id="countLeft"></div>
+        </div>
+        <div class="manual-row">
+          <input type="text" class="path-input" id="inputLeft" placeholder="或手动输入文件夹路径..." />
+          <button class="path-btn" data-side="left">读取</button>
+        </div>
+      </div>
+
+      <div class="vs">VS</div>
+
+      <div class="side-group">
+        <div class="drop-area" id="dropRight">
+          <div class="drop-placeholder">
+            <span class="drop-icon">[文件夹]</span>
+            <span>拖入右侧文件夹</span>
+            <span class="drop-hint">或点击选择</span>
+          </div>
+          <div class="drop-path" id="pathRight"></div>
+          <div class="item-count" id="countRight"></div>
+        </div>
+        <div class="manual-row">
+          <input type="text" class="path-input" id="inputRight" placeholder="或手动输入文件夹路径..." />
+          <button class="path-btn" data-side="right">读取</button>
+        </div>
+      </div>
+    </div>
+
+    <button id="compareBtn" class="compare-btn" disabled>比较</button>
+
+    <div id="resultArea" class="result-area" hidden>
+      <div class="result-header">
+        <span id="resultTitle">比较结果</span>
+        <span id="resultSummary"></span>
+      </div>
+      <div id="diffList" class="diff-list"></div>
+    </div>
+  </div>
+
+  <input type="file" id="folderPickerLeft" webkitdirectory directory hidden />
+  <input type="file" id="folderPickerRight" webkitdirectory directory hidden />
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,8 @@
+{
+  "name": "file-diff",
+  "version": "1.0.0",
+  "description": "轻量级文件夹内容比较器",
+  "scripts": {
+    "start": "node server.js"
+  }
+}
