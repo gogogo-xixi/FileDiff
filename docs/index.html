@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="FileDiff 浏览器版：在本地比较两个文件夹的平级内容差异，文件不会上传。" />
+  <title>FileDiff | 浏览器文件夹比较器</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="app" role="main">
+    <header class="header-bar">
+      <div class="header-main">
+        <p class="eyebrow">FILEDIFF / BROWSER EDITION</p>
+        <h1>文件夹比较器</h1>
+        <p class="subtitle">平级比较两个文件夹中的文件名差异，文件不会上传。</p>
+      </div>
+      <a class="repo-link" href="https://github.com/SongAoBo/FileDiff" target="_blank" rel="noreferrer">
+        GitHub
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M7 17 17 7"/>
+          <path d="M7 7h10v10"/>
+        </svg>
+      </a>
+    </header>
+
+    <div id="statusBar" class="status-bar status-info" role="status" aria-live="polite">
+      浏览器模式 · 文件只在本地读取
+    </div>
+
+    <section class="drop-area-container" aria-label="文件夹对比区域">
+      <div class="side-group">
+        <div class="drop-area" id="dropLeft" tabindex="0" role="button" aria-label="左侧文件夹，点击或拖入选择">
+          <div class="drop-placeholder">
+            <svg class="drop-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/>
+            </svg>
+            <span>选择左侧文件夹</span>
+            <span class="drop-hint">点击选择或拖入此处</span>
+          </div>
+          <div class="drop-path" id="pathLeft" aria-live="polite"></div>
+          <div class="item-count" id="countLeft" aria-live="polite"></div>
+        </div>
+      </div>
+
+      <div class="vs-divider" aria-hidden="true">
+        <span class="vs-badge">VS</span>
+      </div>
+
+      <div class="side-group">
+        <div class="drop-area" id="dropRight" tabindex="0" role="button" aria-label="右侧文件夹，点击或拖入选择">
+          <div class="drop-placeholder">
+            <svg class="drop-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/>
+            </svg>
+            <span>选择右侧文件夹</span>
+            <span class="drop-hint">点击选择或拖入此处</span>
+          </div>
+          <div class="drop-path" id="pathRight" aria-live="polite"></div>
+          <div class="item-count" id="countRight" aria-live="polite"></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="usage-note" aria-label="使用说明">
+      <span>推荐 Chrome / Edge</span>
+      <span>只比较文件夹的平级内容，不递归子目录</span>
+    </div>
+
+    <button id="compareBtn" class="compare-btn" disabled aria-label="开始比较">
+      <svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14Z"/>
+      </svg>
+      <span class="btn-text">开始比较</span>
+    </button>
+
+    <div id="resultArea" class="result-area" hidden role="region" aria-label="比较结果">
+      <div class="result-header">
+        <span id="resultTitle" class="result-title">比较结果</span>
+        <span id="resultSummary" class="result-summary"></span>
+      </div>
+      <div id="diffList" class="diff-list" role="list" aria-label="差异列表"></div>
+    </div>
+
+    <footer class="page-footer">
+      <span>文件内容不会发送到服务器</span>
+      <a href="https://github.com/SongAoBo/FileDiff" target="_blank" rel="noreferrer">查看源码</a>
+    </footer>
+  </div>
+
+  <input type="file" id="folderPickerLeft" webkitdirectory directory hidden />
+  <input type="file" id="folderPickerRight" webkitdirectory directory hidden />
+  <script src="app.js"></script>
+</body>
+</html>
