@@ -4,7 +4,7 @@
 
 ## 在线版本
 
-浏览器版地址：`https://SongAoBo.github.io/FileDiff/`
+浏览器版地址：`https://gogogo-xixi.github.io/FileDiff/`
 
 在线版支持拖拽文件夹和点击选择文件夹，只保留平级文件名比较。所有读取都在浏览器本地完成，不上传文件内容。
 
@@ -49,4 +49,4 @@ file-diff/
 - Branch: `main`
 - Folder: `/docs`
 
-保存并等待部署完成后，访问 `https://SongAoBo.github.io/FileDiff/`。
+保存并等待部署完成后，访问 `https://gogogo-xixi.github.io/FileDiff/`。
